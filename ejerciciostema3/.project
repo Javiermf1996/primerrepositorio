@@ -90,3 +90,15 @@ La opción Información mostrará un desplegable con la información de como fun
 
 La opción Salir cerrará la aplicación.
 
+
+hola
+
+
+La entidad Usuario referencia al usuario fuera del juego en si. Nombre de cuenta, contraseña y las partidas asociadas a él.
+
+La entidad Partida guardará al ganador de esa partida, los jugadores y el tiempo total que ha durado la partida.
+
+La entidad partida tendrá un log que guarde los eventos que han ido pasando durante la partida, estos eventos se dividirán entre el tiempo en los que hayan pasado y los diferentes tipos de acción que pueden pasar. También obtendrán el usuario que ha hecho tal acción.
+
+
+

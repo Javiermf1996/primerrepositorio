@@ -6,7 +6,7 @@
     <title>Document</title>
     <script src="js/pixi.min.js"></script>
     <script>
-            var hexagonRadius = 50;
+            var hexagonRadius = 52;
             var hexagonHeight = hexagonRadius * Math.sqrt(3);
 
             
@@ -14,9 +14,10 @@
         window.onload = function(){
             app = new PIXI.Application({
 
-                width: 1200,
+                width: 900,
                 height: 600,
-                backgroundColor: 0xAAE4
+                backgroundColor: 0xAAE4,
+                
             }
             );
 
@@ -49,8 +50,7 @@
             const { x, y } = renderer.plugins.interaction.mouse.global;
             $count.textContent = x + ',' + y;
             })
-
-
+ 
             //NARANJAS
             // Create a new texture
             const texture = PIXI.Texture.from('images/naranja.jpg');
@@ -78,7 +78,7 @@
                 // use delta to create frame-independent transform
                 container.rotation -= 0.01 * delta;
             });
-           
+            
             //HEXAGONO
  
 
@@ -87,27 +87,62 @@
             // Scale mode for pixelation
             texture1.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
 
-            let hex1 = {'x' : 626, 'y' : -289};
-            let hex2 = {'x' : 733, 'y' : -224};
-            let hex3 = {'x' : 626, 'y' : -153};
+            let hex1 = {'x' : 450, 'y' : 259};
+            let hex2 = {'x' : 525, 'y' : 303};
+            let hex3 = {'x' : 525, 'y' : 216};
+            let hex4 = {'x' : 450, 'y' : 173};
+            let hex5 = {'x' : 375, 'y' : 216};
+            let hex6 = {'x' : 375, 'y' : 303};
+            let hex7 = {'x' : 450, 'y' : 346};
+            let hex8 = {'x' : 600, 'y' : 259};
+            let hex9 = {'x' : 600, 'y' : 173};
+            let hex10 = {'x' : 525, 'y' : 129};
+            let hex11 = {'x' : 450, 'y' : 86};
+            let hex12 = {'x' : 375, 'y' : 129};
+            let hex13 = {'x' : 300, 'y' : 173};
+            let hex14 = {'x' : 300, 'y' : 259};
+            let hex15 = {'x' : 300, 'y' : 346};
+            let hex16 = {'x' : 375, 'y' : 389};
+            let hex17 = {'x' : 450, 'y' : 433};
+            let hex18 = {'x' : 525, 'y' : 389};
+            let hex19 = {'x' : 600, 'y' : 346};
 
-            var hexagons = [];
+
+            const hexagons = [];
 
             hexagons.push(hex1);
             hexagons.push(hex2);
             hexagons.push(hex3);
+            hexagons.push(hex4);
+            hexagons.push(hex5);
+            hexagons.push(hex6);
+            hexagons.push(hex7);
+            hexagons.push(hex8);
+            hexagons.push(hex9);
+            hexagons.push(hex10);
+            hexagons.push(hex11);
+            hexagons.push(hex12);
+            hexagons.push(hex13);
+            hexagons.push(hex14);
+            hexagons.push(hex15);
+            hexagons.push(hex16);
+            hexagons.push(hex17);
+            hexagons.push(hex18);
+            hexagons.push(hex19);
+         
+
 
             console.log(hexagons);
             console.log(hexagons[0].x);
-            for (var i = 0 ; i < 19; i++) {
+            for (var i = 0 ; i < hexagons.length; i++) {
            /* var hexaP = toHexagonPosition({
                 x: hexagons[i].x,
                 y: hexagons[i].y
             })*/
 
             var hexaP = toHexagonPosition({
-                x: 599,
-                y: 256
+                x: hexagons[i].x,
+                y: hexagons[i].y
             })
             console.log('hexagono ' + i);
             console.log(hexaP.x);
@@ -118,14 +153,13 @@
             );
             }
 
-
-             //PUNTO
+            //PUNTO
              //const texture2 = PIXI.Texture.from(images/pui)
              const punto =  PIXI.Sprite.from('images/punto.jpg');
             punto.interactive = true;
             punto.buttonMode = true;
-            punto.x = 100;
-            punto.y = 100;
+            punto.x = 526;
+            punto.y = 322;
             app.stage.addChild(punto);
 
             punto.on('pointerdown', ()=>{
@@ -161,14 +195,41 @@
             .on('pointermove', onDragMove);
 
 
+            //PUNTOS BUENOS
+
+            const semicircle = new PIXI.Graphics();
+            semicircle.beginFill(0x000000);
+            semicircle.lineStyle(0.5, 0xffffff);
+            semicircle.arc(25 ,25 , 12, 25, Math.PI); // cx, cy, radius, startAngle, endAngle
+            semicircle.position = {x: 526, y: 322};
+            app.stage.addChild(semicircle);
+
         }
 
 
 function createBunny(x, y) {
 
 var bunny = new PIXI.Graphics();
-bunny.beginFill(0xFF0000);
+var colors = [0xFF0000, 0x9C9C9C, 0xFFFF00, 0x008F39, 0x00FF00, 0xEED09D];
+var count = [0,0,0,0,0,0];
+var rnd = Math.floor(Math.random() * (5 - 0)) + 0;
 
+if(count[rnd] < 5 ){
+count[rnd] = count[rnd] + 1;
+bunny.beginFill(colors[rnd]);
+bunny.lineStyle(3, 0xffffff);
+}else if(count[5] == 1){
+bunny.beginFill(colors[5]);
+count[5] = count[5] + 1; 
+}else{
+bunny.beginFill(colors[rnd]);
+}
+/*if(count = 0){
+bunny.beginFill(0xEED09D);
+}else{
+bunny.beginFill(0x9C9C9C);
+count++;
+}*/
 bunny.drawPolygon([
   -hexagonRadius, 0,
   -hexagonRadius/2, hexagonHeight/2,

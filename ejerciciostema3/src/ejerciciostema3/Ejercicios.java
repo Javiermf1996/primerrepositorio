@@ -196,14 +196,86 @@
 
 
             //PUNTOS BUENOS
+            let cir1 = {'x' : 571, 'y' : 378};
+            let cir2 = {'x' : 558, 'y' : 357};
+            let cir3 = {'x' : 546, 'y' : 336};
+            let cir4 = {'x' : 450, 'y' : 173};
+            let cir5 = {'x' : 560, 'y' : 314};
+            let cir6 = {'x' : 572, 'y' : 292};
+            let cir7 = {'x' : 597, 'y' : 290};
+            let cir8 = {'x' : 620, 'y' : 291};
+            let cir9 = {'x' : 600, 'y' : 173};
+            let cir10 = {'x' : 636, 'y' : 308};
+            let cir11 = {'x' : 650, 'y' : 330};
+            let cir12 = {'x' : 636, 'y' : 357};
+            let cir13 = {'x' : 624, 'y' : 379};
+            let cir14 = {'x' : 598, 'y' : 382};
+            let cir15 = {'x' : 300, 'y' : 346};
+            let cir16 = {'x' : 375, 'y' : 389};
+            let cir17 = {'x' : 450, 'y' : 433};
+            let cir18 = {'x' : 525, 'y' : 389};
+            let cir19 = {'x' : 600, 'y' : 346};
 
+
+            const circles = [];
+
+            circles.push(cir1);
+            circles.push(cir2);
+            circles.push(cir3);
+            circles.push(cir4);
+            circles.push(cir5);
+            circles.push(cir6);
+            circles.push(cir7);
+            circles.push(cir8);
+            circles.push(cir9);
+            circles.push(cir10);
+            circles.push(cir11);
+            circles.push(cir12);
+            circles.push(cir13);
+            circles.push(cir14);
+            circles.push(cir15);
+            circles.push(cir16);
+            circles.push(cir17);
+            circles.push(cir18);
+            circles.push(cir19);
+
+
+
+            for(var x = 0; x < circles.length ; x++){
             const semicircle = new PIXI.Graphics();
+            semicircle.interactive = true;
+            semicircle.buttonMode = true;
             semicircle.beginFill(0x000000);
             semicircle.lineStyle(0.5, 0xffffff);
-            semicircle.arc(25 ,25 , 12, 25, Math.PI); // cx, cy, radius, startAngle, endAngle
-            semicircle.position = {x: 526, y: 322};
+            semicircle.arc(25 ,25 , 9, 25, Math.PI); // cx, cy, radius, startAngle, endAngle
+            semicircle.position = {x: circles[x].x, y: circles[x].y};
             app.stage.addChild(semicircle);
 
+
+            const onDragStarts = event => {
+                semicircle.data = event.data;
+                semicircle.dragging = true;
+            };
+            const onDragEnds = event => {
+                delete semicircle.data;
+                semicircle.dragging = false;
+            };
+            const onDragMoves = event => {
+                if(semicircle.dragging === true){
+                    const newPosition = semicircle.data.getLocalPosition(semicircle.parent);
+                    semicircle.x = newPosition.x;
+                    semicircle.y = newPosition.y;  
+                    console.log('posiciones semicircle');
+                    console.log('x: ' + newPosition.x);
+                    console.log('y: ' + newPosition.y);      
+                }
+            };
+
+            semicircle.on('pointerdown', onDragStarts)
+            .on('pointerup', onDragEnds)
+            .on('pointerupoutside', onDragEnds)
+            .on('pointermove', onDragMoves);
+        }
         }
 
 
@@ -217,7 +289,7 @@ var rnd = Math.floor(Math.random() * (5 - 0)) + 0;
 if(count[rnd] < 5 ){
 count[rnd] = count[rnd] + 1;
 bunny.beginFill(colors[rnd]);
-bunny.lineStyle(3, 0xffffff);
+bunny.lineStyle(5, 0xffffff);
 }else if(count[5] == 1){
 bunny.beginFill(colors[5]);
 count[5] = count[5] + 1; 

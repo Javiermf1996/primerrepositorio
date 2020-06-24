@@ -87,25 +87,25 @@
             // Scale mode for pixelation
             texture1.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
 
-            let hex1 = {'x' : 450, 'y' : 259};
-            let hex2 = {'x' : 525, 'y' : 303};
-            let hex3 = {'x' : 525, 'y' : 216};
-            let hex4 = {'x' : 450, 'y' : 173};
-            let hex5 = {'x' : 375, 'y' : 216};
-            let hex6 = {'x' : 375, 'y' : 303};
-            let hex7 = {'x' : 450, 'y' : 346};
-            let hex8 = {'x' : 600, 'y' : 259};
-            let hex9 = {'x' : 600, 'y' : 173};
-            let hex10 = {'x' : 525, 'y' : 129};
-            let hex11 = {'x' : 450, 'y' : 86};
-            let hex12 = {'x' : 375, 'y' : 129};
-            let hex13 = {'x' : 300, 'y' : 173};
-            let hex14 = {'x' : 300, 'y' : 259};
-            let hex15 = {'x' : 300, 'y' : 346};
-            let hex16 = {'x' : 375, 'y' : 389};
-            let hex17 = {'x' : 450, 'y' : 433};
-            let hex18 = {'x' : 525, 'y' : 389};
-            let hex19 = {'x' : 600, 'y' : 346};
+            let hex1 = {'x' : 450, 'y' : 259, 'text': 2};
+            let hex2 = {'x' : 525, 'y' : 303, 'text': 3};
+            let hex3 = {'x' : 525, 'y' : 216, 'text': 4};
+            let hex4 = {'x' : 450, 'y' : 173, 'text': 5};
+            let hex5 = {'x' : 375, 'y' : 216, 'text': 6};
+            let hex6 = {'x' : 375, 'y' : 303, 'text': 8};
+            let hex7 = {'x' : 450, 'y' : 346, 'text': 9};
+            let hex8 = {'x' : 600, 'y' : 259, 'text': 10};
+            let hex9 = {'x' : 600, 'y' : 173, 'text': 11};
+            let hex10 = {'x' : 525, 'y' : 129, 'text': 12};
+            let hex11 = {'x' : 450, 'y' : 86, 'text': 2};
+            let hex12 = {'x' : 375, 'y' : 129, 'text': 3};
+            let hex13 = {'x' : 300, 'y' : 173, 'text': 4};
+            let hex14 = {'x' : 300, 'y' : 259, 'text': 5};
+            let hex15 = {'x' : 300, 'y' : 346, 'text': 6};
+            let hex16 = {'x' : 375, 'y' : 389, 'text': 8};
+            let hex17 = {'x' : 450, 'y' : 433, 'text': 9};
+            let hex18 = {'x' : 525, 'y' : 389, 'text': 10};
+            let hex19 = {'x' : 600, 'y' : 346, 'text': 11};
 
 
             const hexagons = [];
@@ -142,15 +142,17 @@
 
             var hexaP = toHexagonPosition({
                 x: hexagons[i].x,
-                y: hexagons[i].y
+                y: hexagons[i].y, 
             })
             console.log('hexagono ' + i);
             console.log(hexaP.x);
             console.log(hexaP.y);
             createBunny(
                 hexaP.x,
-                hexaP.y
+                hexaP.y,
+                hexagons[i].text
             );
+
             }
 
             //PUNTO
@@ -279,12 +281,14 @@
         }
 
 
-function createBunny(x, y) {
+function createBunny(x, y, text) {
 
 var bunny = new PIXI.Graphics();
 var colors = [0xFF0000, 0x9C9C9C, 0xFFFF00, 0x008F39, 0x00FF00, 0xEED09D];
 var count = [0,0,0,0,0,0];
 var rnd = Math.floor(Math.random() * (5 - 0)) + 0;
+
+let txt = new PIXI.Text(text ,{fontFamily : 'Times New Roman', fontSize: 15, fill : 0x000000 });
 
 if(count[rnd] < 5 ){
 count[rnd] = count[rnd] + 1;
@@ -333,6 +337,7 @@ bunny.x = x;
 bunny.y = y;
 
 // add it to the stage
+bunny.addChild(txt);
 app.stage.addChild(bunny);
 // app.stage.addChild(hexagon);
 }

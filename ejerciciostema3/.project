@@ -15,90 +15,63 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
 </projectDescription>
-El usuario podrá ver un menú con 4 opciones, la primera “Crear partida” va a configurar una partida donde se podrán elegir los jugadores. Una vez creada la partida el usuario empezará tirando los dados para saber el turno que le corresponde y después seguirá construyendo sus 2 pueblos y 2 caminos al principio de la partida.
+class camino{
 
-El usuario dispondrá de diferentes opciones a medida que el dado vaya marcando números.
+constructor()
 
-Si ha salido el número 7, deberá mover el ladrón de la casilla donde se encuentra y robarle una carta a un jugador al que le afecte esa casilla.
+imagen de camino
+ruta de imagen del camino 
+}
 
-Si ha salido un número donde el usuario tiene un poblado, el usuario deberá robar una carta de recurso del mismo tipo que la casilla donde tenga el poblado.
+class casa(){
 
-Cuando el jugador disponga de suficientes recursos en mano, podrá comprar cartas de investigación, comprar mas pueblos, caminos o ciudades o cambiar recursos de un tipo con la banca. Los recursos se dividen en 5, madera, piedra, trigo, oveja y arcilla.
+constructor(puntos)
+}
 
-Los caminos tienen un coste de 1 madera y 1 arcilla.
+class castillo(){
+constructor(puntos)
+}
+class Punto{
 
-Los poblados tienen un coste de 1 madera, 1 arcilla, 1 trigo y 1 oveja.
-
-Las ciudades tienen un coste de 3 piedras y 2 trigos.
-
-Las cartas de investigación tienen un coste de 1 oveja, 1 piedra y 1 trigo.
-
-Los usuarios también tienen la opción de adquirir recursos cambiando 4 cartas de un mismo tipo por 1 carta que ellos deseen.
-
-Si ellos tienen un poblado en una casilla de tipo “puerto” pueden cambiar 3 cartas de un mismo tipo por 1 carta que ellos deseen.
-
-Si el puerto es de un tipo de recurso en particular, el usuario puede cambiar 2 cartas de un mismo tipo por 1 carta que ellos deseen, pero esta condición solo se aplica al tipo de recurso que sea el puerto.
-
-Por ejemplo: Un usuario tiene un poblado en un puerto de ovejas y el cambia 4 ovejas por 1 piedra y 1 trigo. Esto es valido ya que el usuario tiene un puerto de ovejas y quiere cambiar ovejas. Si el quisiera cambiar otro tipo de recurso no aplicaría la condición del puerto.
-
-Cada pueblo suma 1 punto y cada ciudad 2, se suma 1 punto al que tenga más cartas de investigación de tipo “caballero”, se suman puntos adicionales por cada carta de investigación de tipo “punto de victoria”, se suma 2 puntos por el jugador que tenga mas de 6 caminos enlazados en la partida.
-
-Si alguno de los jugadores suma 10 puntos, el juego terminará y lo declarará ganador.
+constructor (propiedad(objeto), posicionamiento array o valor y x, array hexagonos alrededor, puerto boolean, camino boolean )
+}
 
 
-hola
+abstract class propiedad{
 
+constructor (Objeto (camino,casa,castillo), propietario)
+}
 
-La clase Aplicación será la llamada para invocar a los métodos de la clase “Métodos”.
+class hexagono {
 
-La clase Métodos llamará a los diferentes métodos de la clase “Mapa” y “Jugador”.
+constructor(ladron boolean)
+}
 
-La clase Jugador contendrá las clases Carta y Robar. 
+class carta abstract{
+constructor (objeto (caballero,pvictoria,reclamo,doscaminos))
+tipo
 
-La clase Carta referencia las Cartas de cada jugador. Como las cartas pueden ser de diferentes tipos, quizás en el futuro deba crear unas subclases para diferenciar las cartas de recursos (madera, piedra, trigo, ovejas y arcilla) de las de investigación (caballero, punto de victoria, creador de caminos, monopolio). Existirá un método que las relacione con el usuario. 
+}
 
-La clase Robar puede no ser necesaria, ya que puede ser un método de la clase Carta, tengo motivos aun para dejarlo. Esperare a desarrollar las clases para cambiarlo.
+class caballero
+class punto vic
+class reclamo
+class doscaminos
+class recurso
 
-La clase Apropiado puede no ser necesaria o llamarse de otra manera, ya que las ciudades, caminos y pueblos del usuario ya pertenecerán al usuario, pero al unirlo con las posiciones en el mapa, será la encargada de asignar la posición del mapa con el jugador y la construcción.
+class jugador{
+nombre string
+cartas []
+puntos
 
-Estas serían la clase y las subclases de Jugador salvo la ultima “Puntos” que dejare para mas tarde porque quiero contar las de mapa primero y ver una visión global de las clases del juego.
+metodo crear(propiedad p ){
 
-La clase Mapa contendrá la clase “Hexágono” ,“Número” , “Puerto” , y “Ladrón”.
+}
 
-La clase Hexágono obtendrá de que tipo es la casilla y obtendrá los puntos que se le asignan en la clase Puntos y Ladrón.
+metodo robar cartas(numero, list<carta> cartas){}
+metodo descarte(cartas[], cartasD[])
+}
 
-La clase Ladrón puede no ser necesaria porque puede ser un método de la clase hexágono ya que hay posiciono el ladrón, pero esto prefiero verlo en el desarrollo.
- 
-La clase Puerto puede no ser necesaria porque puede ser un método de la clase hexágono ya que los hexágonos pueden ser de tipo puerto o no. Pero esto prefiero verlo en el desarrollo.
-
-La clase Puntos obtendrá cada una de las posiciones del mapa donde se puede construir y también cada una de las posiciones donde los diferentes usuarios ya han construido.
-
- Puede que haya otra clase por encima de “Hexágono” que recupere las posiciones(puntos) compartidas entre los diferentes hexágonos que forman el tablero.
-
-
-
-hola
-
-
-La navegación por la aplicación es sencilla, serán 4 opciones que como ya he comentado en el diagrama de casos de uso la primera será crear una partida, seleccionar el numero de jugadores, tirar los dados y según qué número salga poder hacer unas acciones u otras.
-
--El menú de opciones será el menú durante el juego que podremos hacer siempre que los usuarios estén de acuerdo en hacerlo. Salvo en la opción de salir que podremos salir del juego.
-
-La opción Instrucciones mostrará un desplegable con las instrucciones del juego. (normas, puntos, curiosidades).
-
-La opción Información mostrará un desplegable con la información de como funciona la aplicación.
-
-La opción Salir cerrará la aplicación.
-
-
-hola
-
-
-La entidad Usuario referencia al usuario fuera del juego en si. Nombre de cuenta, contraseña y las partidas asociadas a él.
-
-La entidad Partida guardará al ganador de esa partida, los jugadores y el tiempo total que ha durado la partida.
-
-La entidad partida tendrá un log que guarde los eventos que han ido pasando durante la partida, estos eventos se dividirán entre el tiempo en los que hayan pasado y los diferentes tipos de acción que pueden pasar. También obtendrán el usuario que ha hecho tal acción.
 
 
 

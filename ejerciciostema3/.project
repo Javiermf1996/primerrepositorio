@@ -16,21 +16,29 @@
 	</natures>
 </projectDescription>
 class camino{
+puntos = 0;
+
+imagen de camino;
+
+ruta de imagen del camino;
 
 constructor()
-
-imagen de camino
-ruta de imagen del camino 
+ 
 }
 
 class casa(){
+puntos = 1;
 
-constructor(puntos)
+
+constructor()
 }
 
 class castillo(){
-constructor(puntos)
+puntos = 2;
+constructor()
 }
+
+
 class Punto{
 
 constructor (propiedad(objeto), posicionamiento array o valor y x, array hexagonos alrededor, puerto boolean, camino boolean )
@@ -38,18 +46,22 @@ constructor (propiedad(objeto), posicionamiento array o valor y x, array hexagon
 
 
 abstract class propiedad{
+puntos;
 
 constructor (Objeto (camino,casa,castillo), propietario)
 }
 
 class hexagono {
+ladron boolean;
 
-constructor(ladron boolean)
+constructor(posicion [], recurso){
+
+}
 }
 
 class carta abstract{
-constructor (objeto (caballero,pvictoria,reclamo,doscaminos))
-tipo
+constructor (objeto (caballero,pvictoria,reclamo,doscaminos,recurso))
+
 
 }
 
@@ -61,17 +73,22 @@ class recurso
 
 class jugador{
 nombre string
-cartas []
-puntos
 
-metodo crear(propiedad p ){
+map cartas
+propiedades[]`
+puntos;
 
+metodo mover ladron(){
+}
+
+
+metodo crear(Objeto (camino,casa,castillo) prop ){
+new Propiedad(prop)
 }
 
 metodo robar cartas(numero, list<carta> cartas){}
 metodo descarte(cartas[], cartasD[])
 }
-
 
 
 

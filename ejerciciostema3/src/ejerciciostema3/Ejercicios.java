@@ -198,7 +198,7 @@
 
 
             //PUNTOS BUENOS
-            let cir1 = {'x' : 571, 'y' : 378};
+            let cir1 = {'x' : 596, 'y' : 405};
             let cir2 = {'x' : 558, 'y' : 357};
             let cir3 = {'x' : 546, 'y' : 336};
             let cir4 = {'x' : 450, 'y' : 173};
@@ -248,8 +248,7 @@
             semicircle.interactive = true;
             semicircle.buttonMode = true;
             semicircle.beginFill(0x000000);
-            semicircle.lineStyle(0.5, 0xffffff);
-            semicircle.arc(25 ,25 , 9, 25, Math.PI); // cx, cy, radius, startAngle, endAngle
+            semicircle.arc(0,0, 5, 360, Math.PI); // cx, cy, radius, startAngle, endAngle
             semicircle.position = {x: circles[x].x, y: circles[x].y};
             app.stage.addChild(semicircle);
 
